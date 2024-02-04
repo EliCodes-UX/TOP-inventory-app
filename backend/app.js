@@ -10,6 +10,15 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// connecting mongodb
+mongoose.connect(
+  'mongodb+srv://elibonner:XHKIecdztNkOc4IQ@inventory.o9clldo.mongodb.net/?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
