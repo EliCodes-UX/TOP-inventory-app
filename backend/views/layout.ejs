@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Inventory App</title>
+    <!-- Include your stylesheets and other head elements here -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- Include the sidebar partial -->
+      <%- include('sidebar') %>
+
+      <!-- Main content area -->
+      <main class="main-content">
+        <!-- Content from other views will be injected here -->
+        <%- body %>
+      </main>
+    </div>
+  </body>
+</html>
