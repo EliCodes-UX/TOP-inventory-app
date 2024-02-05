@@ -1,8 +1,10 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.sideBar {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
 }
 
-a {
-  color: #00B7FF;
+.sideBar ul {
+  list-style-type: none;
+  padding: 0;
 }
