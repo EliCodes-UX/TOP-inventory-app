@@ -6,12 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
+// var categoryRouter = require('./routes/category');
 
 var app = express();
-// const mongoose = require('mongoose');
-// mongoose.set('strictQuery', false);
-// const mongoDB =
-//   'mongodb+srv://elibonner:XHKIecdztNkOc4IQ@inventory.o9clldo.mongodb.net/?retryWrites=true&w=majority';
+
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -35,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/items', itemsRouter);
+// app.use('/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
