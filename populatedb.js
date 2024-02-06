@@ -67,9 +67,14 @@ async function createCategories() {
 
 async function createItems() {
   console.log('adding items');
-  await promise.all({
+  await Promise.all([
     itemCreate(
-    itemCreate(0, 'i9 13900k', 'intels leading processor', '700', categories[0], numberInInventory[14]),
-    )
-  });
+      0,
+      'i9 13900k',
+      'intels leading processor',
+      '700',
+      category[0],
+      numberInInventory[14]
+    ),
+  ]);
 }
