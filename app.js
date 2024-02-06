@@ -9,6 +9,7 @@ var itemsRouter = require('./routes/items');
 // var categoryRouter = require('./routes/category');
 
 var app = express();
+const async = require('async');
 
 const mongoose = require('mongoose');
 require('dotenv').config();
