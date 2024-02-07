@@ -36,6 +36,17 @@ app.use('/', indexRouter);
 app.use('/items', itemsRouter);
 // app.use('/category', categoryRouter);
 
+app.get('/items', async (req, res) => {
+  try {
+    // Fetch items data from MongoDB
+    const items = await Items.find(); // Assuming Item is your Mongoose model
+    res.render('items', { items: items });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
