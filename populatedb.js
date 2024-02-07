@@ -34,10 +34,7 @@ const mongoDB =
 // }
 async function main() {
   console.log('Connecting to MongoDB...');
-  await mongoose.connect(mongoDB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(mongoDB, {});
   console.log('Connected to MongoDB');
   await createCategories();
   await createItems();
