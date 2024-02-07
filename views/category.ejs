@@ -1,0 +1,14 @@
+<%- include('layout') %>
+<h1>Categories</h1>
+<ul>
+  <% categories.forEach(category => { %>
+  <li>
+    <strong>Name:</strong> <%= category.name %><br />
+    <strong>Description:</strong> <%= category.description %><br />
+    <% if (category.url) { %>
+    <strong>URL:</strong> <%= category.url %><br />
+    <% } %>
+    <strong>Index:</strong> <%= category.index %>
+  </li>
+  <% }); %>
+</ul>

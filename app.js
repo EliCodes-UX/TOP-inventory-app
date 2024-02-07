@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var Item = require('./models/items');
+var Category = require('./models/categories');
+
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
 // var categoryRouter = require('./routes/category');
@@ -39,7 +42,7 @@ app.use('/items', itemsRouter);
 app.get('/items', async (req, res) => {
   try {
     // Fetch items data from MongoDB
-    const items = await Items.find(); // Assuming Item is your Mongoose model
+    const items = await Item.find();
     res.render('items', { items: items });
   } catch (error) {
     console.error(error);
