@@ -73,10 +73,10 @@ async function main() {
 async function createCategories() {
   console.log('Adding categories');
   await Promise.all([
-    categoryCreate(0, 'Cpu'),
-    categoryCreate(1, 'Gpu'),
-    categoryCreate(2, 'Storage'),
-    categoryCreate(3, 'Memory'),
+    categoryCreate(0, 'Cpu', 'Central Processing Units'),
+    categoryCreate(1, 'Gpu', 'Graphics Processing Units'),
+    categoryCreate(2, 'Storage', 'Storage units'),
+    categoryCreate(3, 'Memory', 'Memory units'),
   ]);
 }
 
@@ -185,10 +185,14 @@ async function createItems() {
   ]);
 }
 
-async function categoryCreate(name) {
-  const category = new Category({ name });
-  await category.save();
-  console.log(`Added category: ${name}`);
+async function categoryCreate(name, description) {
+  const category = new Category({ name, description });
+  try {
+    await category.save();
+    console.log(`Added category: ${name}`);
+  } catch (error) {
+    console.error(`Error adding category ${name}: ${error.message}`);
+  }
 }
 
 async function itemCreate(
