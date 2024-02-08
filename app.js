@@ -9,7 +9,7 @@ var Category = require('./models/categories');
 
 var indexRouter = require('./routes/index');
 var itemsRouter = require('./routes/items');
-// var categoryRouter = require('./routes/category');
+var categoryRouter = require('./routes/category');
 
 var app = express();
 const async = require('async');
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/items', itemsRouter);
-// app.use('/category', categoryRouter);
+app.use('/categories', categoryRouter);
 
 app.get('/items', async (req, res) => {
   try {
