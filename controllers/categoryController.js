@@ -15,56 +15,13 @@ const categoryController = {
   },
 
   getAllCategories: async (req, res) => {
+    // Fix the syntax error here
     try {
       const categories = await Category.find();
+      if (!categories) {
+        throw new Error('Categories not found');
+      }
       res.status(200).json(categories);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  },
-
-  getCategoryById: async (req, res) => {
-    try {
-      const categoryId = req.params.id;
-      const category = await Category.findById(categoryId);
-      if (!category) {
-        return res.status(404).json({ message: 'Category not found' });
-      }
-      res.status(200).json(category);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  },
-
-  updateCategoryById: async (req, res) => {
-    try {
-      const categoryId = req.params.id;
-      const { name, description, url } = req.body;
-      const updatedCategory = await Category.findByIdAndUpdate(
-        categoryId,
-        { name, description, url },
-        { new: true }
-      );
-      if (!updatedCategory) {
-        return res.status(404).json({ message: 'Category not found' });
-      }
-      res.status(200).json(updatedCategory);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
-    }
-  },
-
-  deleteCategoryById: async (req, res) => {
-    try {
-      const categoryId = req.params.id;
-      const deletedCategory = await Category.findByIdAndDelete(categoryId);
-      if (!deletedCategory) {
-        return res.status(404).json({ message: 'Category not found' });
-      }
-      res.status(204).end();
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });

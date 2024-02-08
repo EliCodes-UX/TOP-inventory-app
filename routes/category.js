@@ -1,16 +1,18 @@
-const express = require('express');
-const router = express.Router();
-const categoryController = require('../controllers/categoryController');
+const Category = require('../models/categories');
 
-router.get('/', async (req, res) => {
-  try {
-    const categories = await categoryController.getAllCategories();
+const categoryController = {
+  getAllCategories: async (req, res) => {
+    try {
+      const categories = await Category.find();
+      if (!categories) {
+        throw new Error('Categories not found');
+      }
+      res.status(200).json(categories);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  },
+};
 
-    res.render('categories', { categories });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-module.exports = router;
+module.exports = categoryController;
